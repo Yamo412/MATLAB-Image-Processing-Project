@@ -1,0 +1,1 @@
+piecewise_linear_transform('airplane.png', [0, 100, 130, 255], [0, 70, 200, 255]);

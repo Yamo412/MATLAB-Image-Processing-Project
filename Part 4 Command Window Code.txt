@@ -1,0 +1,8 @@
+input_image = imread('house.png');
+
+[gradient_magnitude, gradient_angle, gradient_suppressed] = edge_detection(input_image);
+
+subplot(2, 2, 1), imshow(input_image), title('Input Image');
+subplot(2, 2, 2), imshow(gradient_magnitude), title('Gradient Magnitude');
+subplot(2, 2, 3), imshow(gradient_angle, []), title('Gradient Angle');
+subplot(2, 2, 4), imshow(gradient_suppressed), title('Gradient after Non-Maximal Suppression');

@@ -1,0 +1,4 @@
+input_image_path=('camera.png');
+noise_variance=0.02;
+window_size=7;
+adaptive_local_noise_reduction('camera.png', 0.02, 7);

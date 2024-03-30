@@ -1,0 +1,41 @@
+ Initializing the degradation function
+
+degradation_function = [
+    3, 7, 7, 7, 8, 9, 5;
+    4, 6, 2, 5, 8, 8, 3;
+    8, 5, 4, 4, 6, 5, 8;
+    1, 5, 6, 5, 4, 6, 2;
+    1, 3, 8, 3, 8, 6, 3;
+    2, 7, 1, 5, 5, 2, 2;
+    6, 2, 9, 5, 4, 3, 3
+] / 239;
+
+% Reading the image and making sure its in grayscale
+
+original_image = imread('yard.png');
+original_image = rgb2gray(original_image);
+
+% Degrading the image using conv2, reading the original image as double
+, taking the degradation function, and using the ‘same’ keyword to specify the output of the image having the same size as the input
+
+degraded_image = conv2(double(original_image), degradation_function, 'same');
+
+% Initializing the threshold variable to 0.01 and calling the inverse_filter method
+
+threshold = 0.01;
+restored_image = inverse_filter(degraded_image, degradation_function, threshold);
+
+
+
+% Creating a figure and plotting the original image and the results.
+
+figure;
+
+subplot(3, 3, 1); imshow(original_image, []); title('Original Image');
+subplot(3, 3, 2); imshow(log(1 + abs(fftshift(fft2(original_image)))), []); title('Original Image Frequency Domain');
+
+subplot(3, 3, 4); imshow(degraded_image, []); title('Degraded Image');
+subplot(3, 3, 5); imshow(log(1 + abs(fftshift(fft2(degraded_image)))), []); title('Degraded Image Frequency Domain');
+
+subplot(3, 3, 7); imshow(restored_image, []); title('Restored Estimated Image');
+subplot(3, 3, 8); imshow(log(1 + abs(fftshift(fft2(restored_image)))), []); title('Restored Estimated Image Frequency Domain');
