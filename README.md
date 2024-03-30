@@ -40,6 +40,6 @@ Each part of the project can be executed independently by running the correspond
 
 **Authors**
 
-Yaman Salman
+Yaman Salman,
 Sama Khraim
 
